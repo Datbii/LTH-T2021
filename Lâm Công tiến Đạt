@@ -1,5 +1,48 @@
-
 /*
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Bai_4
+{
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+Console.OutputEncoding = Encoding.UTF8;
+            Console.Write("Nhập năm: ");
+            int t = int.Parse(Console.ReadLine());
+
+            if (t % 4 == 0)
+            {
+                if (t % 100 == 0)
+                {
+                    if (t % 400 == 0)
+                    {
+                        Console.Write("Là năm Nhuận");
+                    }
+                    else
+                    {
+                        Console.Write("Là năm không Nhuận");
+                    }
+                }
+                else
+                {
+                    Console.Write("Là năm Nhuận");
+                }
+            }   
+            else {
+                Console.Write("Là nhăm không Nhuận");
+
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
    //Lâm Công Tiến Đat
   //21k4080003
 using System;
@@ -18,40 +61,49 @@ namespace Bai_5
             Console.OutputEncoding = Encoding.UTF8;
             Console.Write(" Nhập điểm:");
             float DTB = float.Parse(Console.ReadLine());
-            if (DTB < 3.5)
-            {
-                Console.Write("Kém");
-            }
-            if (DTB < 5 & DTB >= 3.5)
-            {
-                Console.Write("Yếu");
-            }
-            if (DTB < 6.5 & DTB >= 5)
-            {
-                Console.Write("Trung Bình");
-            }
-            if (DTB < 8 & DTB >= 6.5)
-            {
-                Console.Write("Khá");
-            }
-
-            if (DTB < 9 & DTB >= 8)
-            {
-                Console.Write(" Giỏi");
-            }
-            if (DTB < 10 & DTB >= 9)
-            {
-                Console.Write(" Xuất sắc");
-            }
-            else if(DTB >10)
+            if (DTB < 0 || DTB > 10)
             {
                 Console.Write(" Số điểm nhập không chính xác");
             }
-            Console.ReadKey();
-        }
+
+
+            else
+            {
+                if (DTB >= 0 & DTB < 3.5)
+                {
+                    Console.Write("Kém");
+                }
+                if (DTB >= 3.5 & DTB < 5)
+                {
+                    Console.Write("Yếu");
+                }
+                if (DTB < 6.5 & DTB >= 5)
+                {
+                    Console.Write("Trung Bình");
+                }
+                if (DTB < 8 & DTB >= 6.5)
+                {
+                    Console.Write("Khá");
+                }
+
+                if (DTB < 9 & DTB >= 8)
+                {
+                    Console.Write(" Giỏi");
+                }
+                if (DTB >= 9 & DTB <= 10)
+                {
+                    Console.Write(" Xuất sắc");
+                }
+            }
             
+
+                Console.ReadKey();
+            
+
         }
     }
+}
+    
 
 
 
@@ -105,67 +157,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bài_7
+namespace bai_7_OOP
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            double p, t;
             Console.OutputEncoding = Encoding.UTF8;
-            Console.Write(" Nhập số điện (kWh): ");
-            float SoDien = float.Parse(Console.ReadLine());
-
-            if (SoDien >= 1 & SoDien <= 50)
+            do
             {
-                int GiaBan = 1484;
+                Console.Write("Nhập số điện: ");
+                p = Convert.ToInt32(Console.ReadLine());
+                if (p > 0)
+                {
+                    if (p <= 50)
+                    {
+                        t = (p * 1484);
+                        Console.WriteLine("số tiền phải trả là: {0}", t);
+                    }
+                    else if (p <= 100)
+                    {
+                        t = (50 * 1484) + ((p - 50) * 1533);
+                        Console.WriteLine("số tiền phải trả là: {0}", t);
+                    }
+                    else if (p <= 200)
+                    {
+                        t = (50 * 1484) + (50 * 1533) + ((p - 100) * 1786);
+                        Console.WriteLine("số tiền phải trả là: {0}", t);
+                    }
+                    else if (p <= 300)
+                    {
+                        t = (50 * 1484) + (50 * 1533) + (100 * 1786) + ((p - 200) * 2242);
+                        Console.WriteLine("số tiền phải trả là: {0}", t);
+                    }
+                    else if (p <= 400)
+                    {
+                        t = (50 * 1484) + (50 * 1533) + (100 * 1786) + (100 * 2242) + ((p - 300) * 2503);
+                        Console.WriteLine("số tiền phải trả là: {0}", t);
+                    }
+                    else
+                    {
+                        t = (50 * 1484) + (50 * 1533) + (100 * 1786) + (100 * 2242) + (100 * 2503) + ((p - 400) * 2587);
+                        Console.WriteLine("số tiền phải trả là: ", t);
+                    }
+                }
 
-                float TienDien = SoDien * GiaBan;
-                float TienPhaiTra = TienDien + TienDien * (10 / 100);
-                Console.Write("Tiền điện bằng :{0}", TienPhaiTra);
-            }
-            if (SoDien >= 51 & SoDien <= 100)
-            {
-                int GiaBan = 1533;
+                else { Console.WriteLine("nhập sai"); };
 
-                float TienDien = SoDien * GiaBan;
-                float TienPhaiTra = TienDien + TienDien * (10 / 100);
-                Console.Write("Tiền điện bằng :{0}", TienPhaiTra);
-            }
-            if (SoDien >= 101 & SoDien <= 200)
-            {
-                int GiaBan = 1786;
-
-                float TienDien = SoDien * GiaBan;
-                float TienPhaiTra = TienDien + TienDien * (10 / 100);
-                Console.Write("Tiền điện bằng :{0}", TienPhaiTra);
-            }
-            if (SoDien >= 201 & SoDien <= 300)
-            {
-                int GiaBan = 2242;
-
-                float TienDien = SoDien * GiaBan;
-                float TienPhaiTra = TienDien + TienDien * (10 / 100);
-                Console.Write("Tiền điện bằng :{0}", TienPhaiTra);
-            }
-            if (SoDien >= 301 & SoDien <= 400)
-            {
-                int GiaBan = 2503;
-
-                float TienDien = SoDien * GiaBan;
-                float TienPhaiTra = TienDien + TienDien * (10 / 100);
-                Console.Write("Tiền điện bằng :{0}", TienPhaiTra);
-            }
-            if (SoDien >= 401)
-            {
-                int GiaBan = 2587;
-
-                float TienDien = SoDien * GiaBan;
-                float TienPhaiTra = TienDien + TienDien * (10 / 100);
-                Console.Write("Tiền điện bằng :{0}", TienPhaiTra);
-            }
-
-
+            } while (p < 0);
             Console.ReadKey();
+
         }
     }
 }
